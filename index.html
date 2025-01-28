@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DeboaUnlockPro</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <style>
+    body {
+      background-color: #3b82f6; /* Fondo azul vibrante */
+      color: #FFFF00; /* Amarillo para las letras cayendo */
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      transition: background-color 0.3s, color 0.3s; /* Transición suave */
+    }
+    .dark-mode {
+      background-color: #1f2937; /* Fondo oscuro */
+      color: #f9fafb; /* Texto claro */
+    }
+    .dark-mode-header {
+      background-color: #111827; /* Fondo más oscuro para el header */
+      color: #f9fafb; /* Texto claro en el header */
+    }
+    canvas {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+    .title {
+      font-size: 3rem;
+      font-weight: bold;
+      color: #fff;
+      text-transform: uppercase;
+      text-shadow: 2px 2px 0px #ff0000, 4px 4px 0px #0000ff, 6px 6px 0px #00ff00;
+      animation: glow 2s infinite alternate;
+    }
+    @keyframes glow {
+      0% {
+        text-shadow: 2px 2px 10px #ff0000, 4px 4px 10px #0000ff, 6px 6px 10px #00ff00;
+      }
+      100% {
+        text-shadow: 2px 2px 20px #ff0000, 4px 4px 20px #0000ff, 6px 6px 20px #00ff00;
+      }
+    }
+
+    /* Botón de modo oscuro/claro */
+    .mode-toggle {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: #ffffff;
+      border: none;
+      border-radius: 50%;
+      padding: 10px;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      transition: background-color 0.3s;
+    }
+
+    .mode-toggle:hover {
+      background-color: #f1f5f9;
+    }
+
+    .mode-toggle i {
+      font-size: 20px;
+      color: #3b82f6;
+    }
+
+    /* Botón de servidor verde */
+    .server-toggle {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background-color: #10b981; /* Verde */
+      border: none;
+      border-radius: 50%;
+      padding: 10px;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      transition: background-color 0.3s;
+    }
+
+    .server-toggle:hover {
+      background-color: #6ee7b7;
+    }
+
+    .server-toggle-text {
+      position: absolute;
+      left: 50px; /* Espacio a la derecha del botón */
+      top: 10px;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      line-height: 32px;
+    }
+
+    /* Mejorar el comportamiento en dispositivos móviles */
+    @media (max-width: 768px) {
+      .title {
+        font-size: 2rem;
+      }
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Estilo para el pie de página */
+    .footer {
+      text-align: center;
+      font-size: 0.875rem;
+      margin-top: 20px;
+      padding: 10px;
+      background-color: #111827;
+      color: #f9fafb;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="matrix"></canvas>
+
+  <!-- Botón de Modo Oscuro/Claro -->
+  <button class="mode-toggle" onclick="toggleDarkMode()">
+    <i id="modeIcon" class="fas fa-sun"></i>
+  </button>
+
+  <!-- Botón de Servidor On -->
+  <button class="server-toggle">
+    <i class="fas fa-server"></i>
+  </button>
+  <span class="server-toggle-text">Servidor On</span>
+
+  <header id="header" class="text-white p-4">
+    <h1 class="text-center title">DeboaUnlockPro</h1>
+  </header>
+
+  <main class="p-4 text-white">
+    <!-- Sección de Produtos Digitais -->
+    <section class="mb-6">
+      <h2 class="text-2xl font-bold mb-2">Produtos Digitais</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="p-4 border rounded bg-white shadow text-gray-800">
+          <h3 class="font-bold text-lg">FRP Samsung by IMEI</h3>
+          <img src="frp.jpg" alt="frp" class="w-full h-40 object-cover mb-2">
+          <p>Desbloqueio de Samsung via IMEI.</p>
+          <p class="font-bold">R$ 50,00</p>
+          <a href="https://wa.link/jerh8w" class="bg-blue-500 text-white px-4 py-2 rounded mt-2 inline-block">Comprar</a>
+          <button class="bg-green-500 text-white px-4 py-2 rounded mt-2" onclick="toggleCommentForm()">Comentar</button>
+        </div>
+        <div class="p-4 border rounded bg-white shadow text-gray-800">
+          <h3 class="font-bold text-lg">Conta Mi Xiaomi Definitivo</h3>
+          <img src="maxresdefault.jpg" alt="maxresdefault" class="w-full h-40 object-cover mb-2">
+          <p>Conta definitiva Xiaomi sem restrições.</p>
+          <p class="font-bold">R$ 200,00</p>
+          <a href="https://wa.link/jerh8w" class="bg-blue-500 text-white px-4 py-2 rounded mt-2 inline-block">Comprar</a>
+          <button class="bg-green-500 text-white px-4 py-2 rounded mt-2" onclick="toggleCommentForm()">Comentar</button>
+        </div>
+        <div class="p-4 border rounded bg-white shadow text-gray-800">
+          <h3 class="font-bold text-lg">Aluguel de Box</h3>
+          <img src="IMAGEN.png" alt="IMAGEN" class="w-full h-40 object-cover mb-2">
+          <p>Aluguel de ferramentas como UnlockTools, UMT Box, Pandora BOX, SIGMA KEY, EFTPRO. A partir de R$ 20,00 (24h) com suporte técnico.</p>
+          <a href="https://wa.link/jerh8w" class="bg-blue-500 text-white px-4 py-2 rounded mt-2 inline-block">Comprar</a>
+          <button class="bg-green-500 text-white px-4 py-2 rounded mt-2" onclick="toggleCommentForm()">Comentar</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección de O que dizem nossos clientes -->
+    <section class="mb-6">
+      <h2 class="text-2xl font-bold mb-2">O que dizem nossos clientes</h2>
+      <div id="commentList" class="space-y-4">
+        <div class="p-4 border rounded bg-gray-100 shadow text-gray-800">
+          <strong>João Silva</strong>
+          <p>O produto superou minhas expectativas. Recomendo muito!</p>
+        </div>
+        <div class="p-4 border rounded bg-gray-100 shadow text-gray-800">
+          <strong>Maria Oliveira</strong>
+          <p>Atendimento excelente e suporte técnico de qualidade. Muito obrigada!</p>
+        </div>
+        <div class="p-4 border rounded bg-gray-100 shadow text-gray-800">
+          <strong>Carlos Souza</strong>
+          <p>Serviço impecável, ferramentas confiáveis e equipe muito prestativa.</p>
+        </div>
+      </div>
+
+      <form id="commentForm" class="mt-4 hidden">
+        <h3 class="text-lg font-bold mb-2">Deixe seu comentário</h3>
+        <input id="commentName" type="text" placeholder="Seu nome" class="border p-2 rounded w-full mb-2" required>
+        <textarea id="commentText" placeholder="Seu comentário" class="border p-2 rounded w-full mb-2" required></textarea>
+        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Enviar</button>
+      </form>
+    </section>
+  </main>
+
+  <!-- Pie de página -->
+  <footer class="footer">
+    <p>&copy; DeboaUnlockPro - Todos los derechos reservados. <span id="year"></span></p>
+    <p>Gracias por visitar nuestra página. ¡Volver pronto!</p>
+  </footer>
+
+  <!-- Script para efecto de matriz -->
+  <script>
+    const canvas = document.getElementById('matrix');
+    const ctx = canvas.getContext('2d');
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const letters = Array(256).join(1).split('');
+    const fontSize = 16;
+
+    function drawMatrix() {
+      ctx.fillStyle = '#3b82f6'; // Fondo azul vibrante
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.fillStyle = '#FFFF00'; // Letras amarillas
+      ctx.font = `${fontSize}px monospace`;
+
+      letters.forEach((yPos, index) => {
+        const text = String.fromCharCode(0x30A0 + Math.random() * 96);
+        const xPos = index * fontSize;
+
+        ctx.fillText(text, xPos, yPos);
+
+        if (yPos > canvas.height && Math.random() > 0.98) {
+          letters[index] = 0;
+        } else {
+          letters[index] = yPos + fontSize;
+        }
+      });
+    }
+
+    function update() {
+      drawMatrix();
+      requestAnimationFrame(update); // Usar requestAnimationFrame para una animación más fluida
+    }
+
+    update();
+
+    // Función para mostrar/ocultar el formulario de comentarios
+    function toggleCommentForm() {
+      const commentForm = document.getElementById('commentForm');
+      commentForm.classList.toggle('hidden');
+    }
+
+    // Función para cambiar entre modo oscuro y claro
+    function toggleDarkMode() {
+      const body = document.body;
+      const header = document.getElementById('header');
+      body.classList.toggle('dark-mode');
+      header.classList.toggle('dark-mode-header');
+
+      const modeIcon = document.getElementById('modeIcon');
+      if (body.classList.contains('dark-mode')) {
+        modeIcon.classList.replace('fa-sun', 'fa-moon');
+      } else {
+        modeIcon.classList.replace('fa-moon', 'fa-sun');
+      }
+    }
+
+    // Mostrar el año actual en el pie de página
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
