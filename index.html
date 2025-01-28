@@ -176,33 +176,72 @@
         </div>
       </div>
     </section>
+    <!-- Nueva Sección de Checkers -->
+        <div class="p-4 border rounded bg-white shadow text-gray-800">
+          <h3 class="font-bold text-lg text-center mb-4">Checkers</h3>
+          <div class="grid grid-cols-1 gap-4">
+            <a href="https://samfw.com/imei" target="_blank" class="bg-green-500 text-white px-4 py-2 rounded text-center block transition-transform transform hover:scale-105 active:scale-95">
+              CHECKER KG SAMSUNG
+            </a>
+            <a href="https://ifreeicloud.co.uk/free-check" target="_blank" class="bg-green-500 text-white px-4 py-2 rounded text-center block transition-transform transform hover:scale-105 active:scale-95">
+              CHECKER ICLOUD
+            </a>
+            <a href="https://imei24.com/imei_check/Xiaomi/" target="_blank" class="bg-green-500 text-white px-4 py-2 rounded text-center block transition-transform transform hover:scale-105 active:scale-95">
+              CHECKER XIAOMI
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
 
     <!-- Sección de O que dizem nossos clientes -->
-    <section class="mb-6">
-      <h2 class="text-2xl font-bold mb-2">O que dizem nossos clientes</h2>
-      <div id="commentList" class="space-y-4">
-        <div class="p-4 border rounded bg-gray-100 shadow text-gray-800">
-          <strong>João Silva</strong>
-          <p>O produto superou minhas expectativas. Recomendo muito!</p>
+      <section class="mb-6">
+        <h2 class="text-2xl font-bold mb-2">O que dizem nossos clientes</h2>
+        <div id="commentList" class="space-y-4">
+          <div class="p-4 border rounded bg-gray-100 shadow text-gray-800 flex items-center gap-4">
+            <span class="text-2xl">👨‍💼</span>
+            <div>
+              <strong>João Silva</strong>
+              <p>O produto superou minhas expectativas. Recomendo muito!</p>
+            </div>
+          </div>
+          <div class="p-4 border rounded bg-gray-100 shadow text-gray-800 flex items-center gap-4">
+            <span class="text-2xl">👩‍💼</span>
+            <div>
+              <strong>Maria Oliveira</strong>
+              <p>Atendimento excelente e suporte técnico de qualidade. Muito obrigada!</p>
+            </div>
+          </div>
+          <div class="p-4 border rounded bg-gray-100 shadow text-gray-800 flex items-center gap-4">
+            <span class="text-2xl">👨‍🔧</span>
+            <div>
+              <strong>Carlos Souza</strong>
+              <p>Serviço impecável, ferramentas confiáveis e equipe muito prestativa.</p>
+            </div>
+          </div>
         </div>
-        <div class="p-4 border rounded bg-gray-100 shadow text-gray-800">
-          <strong>Maria Oliveira</strong>
-          <p>Atendimento excelente e suporte técnico de qualidade. Muito obrigada!</p>
-        </div>
-        <div class="p-4 border rounded bg-gray-100 shadow text-gray-800">
-          <strong>Carlos Souza</strong>
-          <p>Serviço impecável, ferramentas confiáveis e equipe muito prestativa.</p>
-        </div>
-      </div>
 
-      <form id="commentForm" class="mt-4 hidden">
-        <h3 class="text-lg font-bold mb-2">Deixe seu comentário</h3>
-        <input id="commentName" type="text" placeholder="Seu nome" class="border p-2 rounded w-full mb-2" required>
-        <textarea id="commentText" placeholder="Seu comentário" class="border p-2 rounded w-full mb-2" required></textarea>
-        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Enviar</button>
-      </form>
-    </section>
-  </main>
+        <form id="commentForm" class="mt-4 hidden">
+          <h3 class="text-lg font-bold mb-2">Deixe seu comentário</h3>
+          <div class="flex items-center gap-4 mb-2">
+            <select id="commentAvatar" class="border p-2 rounded">
+              <option value="👨‍💼">👨‍💼</option>
+              <option value="👩‍💼">👩‍💼</option>
+              <option value="👨‍🔧">👨‍🔧</option>
+              <option value="👩‍🔧">👩‍🔧</option>
+              <option value="👨‍💻">👨‍💻</option>
+              <option value="👩‍💻">👩‍💻</option>
+            </select>
+            <input id="commentName" type="text" placeholder="Seu nome" class="border p-2 rounded w-full" required>
+          </div>
+          <textarea id="commentText" placeholder="Seu comentário" class="border p-2 rounded w-full mb-2" required></textarea>
+          <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Enviar</button>
+        </form>
+      </section>
+    </main>
+
 
   <!-- Pie de página -->
   <footer class="footer">
